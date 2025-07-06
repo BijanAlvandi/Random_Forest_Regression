@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.datasets import fetch_california_housing
+from joblib import dump
 
 # Loading the dataset
 data = fetch_california_housing(as_frame=True)
@@ -20,3 +21,7 @@ regressor = RandomForestRegressor(
     random_state = 42,
 )
 regressor.fit(X_train, y_train)
+
+# save the trained model
+dump(regressor, 'models/random_forest_model.joblib')
+
