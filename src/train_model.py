@@ -18,6 +18,11 @@ y = data.target
 # Split data
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
+# Save test set separately for ecaluation script
+test_data = pd.concat([X_test, y_test], axis=1)
+test_data.to_csv(path_or_buf=os.path.join(save_dir, 'test_data.csv'), index=False)
+
+
 # Hyperparameter tuning
 param_grid = {
     'n_estimators': [10, 20, 30],
